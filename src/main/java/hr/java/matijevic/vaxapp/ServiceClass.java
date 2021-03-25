@@ -14,6 +14,7 @@ public class ServiceClass implements VaccineService, Serializable {
 
     public ServiceClass(VaccineRepository vaccineRepository) {
         this.vaccineRepository = vaccineRepository;
+
     }
 
     @Override
@@ -26,8 +27,8 @@ public class ServiceClass implements VaccineService, Serializable {
         return vaccineRepository.findVaccineByResearchName(researchName).map(this::mapVaccineToDTO).orElse(null);
     }
 
-    public VaccineDTO findVaccineByTypeOfVaccine(String typeOfVaccine) {
-        return vaccineRepository.findVaccineByTypeOfVaccine(typeOfVaccine).map(this::mapVaccineToDTO).orElse(null);
+    public List<Vaccine> findVaccineByTypeOfVaccine(String typeOfVaccine) {
+      return vaccineRepository.findVaccineByTypeOfVaccine(typeOfVaccine);
     }
 
     private VaccineDTO mapVaccineToDTO(final Vaccine vaccine){

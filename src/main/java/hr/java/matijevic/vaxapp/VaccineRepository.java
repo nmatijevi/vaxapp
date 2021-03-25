@@ -9,6 +9,6 @@ interface VaccineRepository {
 
     Optional<Vaccine> findVaccineByResearchName(String researchName);
 
-    Optional<Vaccine> findVaccineByTypeOfVaccine(String typeOfVaccine);
+    List<Vaccine> findVaccineByTypeOfVaccine(String typeOfVaccine);
 
 }

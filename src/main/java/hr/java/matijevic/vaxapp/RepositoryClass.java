@@ -17,8 +17,8 @@ public class RepositoryClass implements VaccineRepository {
                     1, 3200),
             new Vaccine("AZD123", "Astra", "red",
                                 3, 789456)
-    );
 
+    );
 
     @Override
     public List<Vaccine> findAll() {
@@ -30,8 +30,11 @@ public class RepositoryClass implements VaccineRepository {
         return Vaccine.stream().filter(it -> Objects.equals(it.getResearchName(), researchName)).findAny();
     }
 
+
+    List<Vaccine> test = new ArrayList<>();
     @Override
-    public Optional<Vaccine> findVaccineByTypeOfVaccine(String typeOfVaccine) {
-        return Vaccine.stream().filter(it -> Objects.equals(it.getTypeOfVaccine(), typeOfVaccine)).findAny();
+    public List<Vaccine> findVaccineByTypeOfVaccine(final String typeOfVaccine) {
+        return Vaccine.stream().filter(it -> Objects.equals(it.getTypeOfVaccine(), typeOfVaccine)).collect(Collectors.toList());
+
     }
 }

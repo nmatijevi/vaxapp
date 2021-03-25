@@ -1,5 +1,6 @@
 package hr.java.matijevic.vaxapp;
 
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,7 +33,7 @@ public class VaccineController {
     List<VaccineService> listOfVaccineServices = new ArrayList<>();
 
     @GetMapping(params = "typeOfVaccine")
-    public VaccineDTO getVaccineByTypeOfVaccine(@RequestParam final String typeOfVaccine){
+    public List<Vaccine> getVaccineByTypeOfVaccine(@RequestParam final String typeOfVaccine){
         return vaccineService.findVaccineByTypeOfVaccine(typeOfVaccine);
     }
 }
