@@ -3,6 +3,7 @@ package hr.java.matijevic.vaxapp;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,7 +16,6 @@ public class ServiceClass implements VaccineService, Serializable {
         this.vaccineRepository = vaccineRepository;
     }
 
-
     @Override
     public List<VaccineDTO> findAll() {
         return vaccineRepository.findAll().stream().map(this::mapVaccineToDTO).collect(Collectors.toList());
@@ -24,6 +24,10 @@ public class ServiceClass implements VaccineService, Serializable {
     @Override
     public VaccineDTO findVaccineByResearchName(String researchName) {
         return vaccineRepository.findVaccineByResearchName(researchName).map(this::mapVaccineToDTO).orElse(null);
+    }
+
+    public VaccineDTO findVaccineByTypeOfVaccine(String typeOfVaccine) {
+        return vaccineRepository.findVaccineByTypeOfVaccine(typeOfVaccine).map(this::mapVaccineToDTO).orElse(null);
     }
 
     private VaccineDTO mapVaccineToDTO(final Vaccine vaccine){

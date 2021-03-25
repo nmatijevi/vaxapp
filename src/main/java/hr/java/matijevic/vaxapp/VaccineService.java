@@ -7,4 +7,6 @@ public interface VaccineService {
     List<VaccineDTO> findAll();
 
     VaccineDTO findVaccineByResearchName(String researchName);
+
+    VaccineDTO findVaccineByTypeOfVaccine(String typeOfVaccine);
 }
