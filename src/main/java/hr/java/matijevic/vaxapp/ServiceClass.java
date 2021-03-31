@@ -3,8 +3,8 @@ package hr.java.matijevic.vaxapp;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -14,7 +14,6 @@ public class ServiceClass implements VaccineService, Serializable {
 
     public ServiceClass(VaccineRepository vaccineRepository) {
         this.vaccineRepository = vaccineRepository;
-
     }
 
     @Override
@@ -31,7 +30,30 @@ public class ServiceClass implements VaccineService, Serializable {
       return vaccineRepository.findVaccineByTypeOfVaccine(typeOfVaccine);
     }
 
-    private VaccineDTO mapVaccineToDTO(final Vaccine vaccine){
-        return new VaccineDTO(vaccine.getProducerName(), vaccine.getNecessaryNumVacine());
+    @Override
+    public boolean deleteByScienceName(String scienceName) {
+       return vaccineRepository.deleteByScienceName(scienceName);
     }
+
+    @Override
+    public Optional<VaccineDTO> save(VaccineCommand command) {
+      return vaccineRepository.save(mapCommandToVaccine(command)).map(this::mapVaccineToDTO);
+     }
+
+
+    private VaccineDTO mapVaccineToVaccineDTO(final Vaccine command) {
+        return new VaccineDTO(command.getProducerName(), command.getNecessaryNumVaccine());
+    }
+    private Vaccine mapCommandToVaccine(final VaccineCommand command){
+        return new Vaccine(command.getScienceName(),command.getProducerName(),command.getTypeOfVaccine(),
+                command.getNecessaryNumVaccine(),command.getAvailableVaccine());
+    }
+    private VaccineDTO mapCommandToVaccineDTO(final VaccineCommand command){
+        return new VaccineDTO(command.getProducerName(),command.getNecessaryNumVaccine());
+    }
+
+    private VaccineDTO mapVaccineToDTO(final Vaccine vaccine){
+        return new VaccineDTO(vaccine.getProducerName(), vaccine.getNecessaryNumVaccine());
+    }
+
 }

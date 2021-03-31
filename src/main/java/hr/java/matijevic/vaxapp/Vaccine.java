@@ -2,26 +2,28 @@ package hr.java.matijevic.vaxapp;
 
 public class Vaccine {
 
-    private String researchName;
+    private String scienceName;
     private String producerName;
     private String typeOfVaccine;
-    private Integer necessaryNumVacine;
-    private Integer availableVacine;
+    private Integer necessaryNumVaccine;
+    private Integer availableVaccine;
 
-    public Vaccine(String researchName, String producerName, String typeOfVaccine, Integer necessaryNumVacine, Integer availableVacine) {
-        this.researchName = researchName;
+    public Vaccine(String scienceName, String producerName, String typeOfVaccine, Integer necessaryNumVaccine, Integer availableVaccine) {
+        this.scienceName = scienceName;
         this.producerName = producerName;
         this.typeOfVaccine = typeOfVaccine;
-        this.necessaryNumVacine = necessaryNumVacine;
-        this.availableVacine = availableVacine;
+        this.necessaryNumVaccine = necessaryNumVaccine;
+        this.availableVaccine = availableVaccine;
     }
 
-    public String getResearchName() {
-        return researchName;
+
+
+    public String getScienceName() {
+        return scienceName;
     }
 
-    public void setResearchName(String researchName) {
-        this.researchName = researchName;
+    public void setScienceName(String scienceName) {
+        this.scienceName = scienceName;
     }
 
     public String getProducerName() {
@@ -40,19 +42,19 @@ public class Vaccine {
         this.typeOfVaccine = typeOfVacine;
     }
 
-    public Integer getNecessaryNumVacine() {
-        return necessaryNumVacine;
+    public Integer getNecessaryNumVaccine() {
+        return necessaryNumVaccine;
     }
 
-    public void setNecessaryNumVacine(Integer necessaryNumVacine) {
-        this.necessaryNumVacine = necessaryNumVacine;
+    public void setNecessaryNumVaccine(Integer necessaryNumVaccine) {
+        this.necessaryNumVaccine = necessaryNumVaccine;
     }
 
-    public Integer getAvailableVacine() {
-        return availableVacine;
+    public Integer getAvailableVaccine() {
+        return availableVaccine;
     }
 
-    public void setAvailableVacine(Integer availableVacine) {
-        this.availableVacine = availableVacine;
+    public void setAvailableVaccine(Integer availableVaccine) {
+        this.availableVaccine = availableVaccine;
     }
 }

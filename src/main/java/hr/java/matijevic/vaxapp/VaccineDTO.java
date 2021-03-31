@@ -1,5 +1,9 @@
 package hr.java.matijevic.vaxapp;
 
+import org.springframework.http.ResponseEntity;
+
+import java.util.Optional;
+
 public class VaccineDTO {
 
     private String producerName;
@@ -25,4 +29,6 @@ public class VaccineDTO {
     public void setNeccesaryNumVacine(int neccesaryNumVacine) {
         this.neccesaryNumVacine = neccesaryNumVacine;
     }
+
+
 }

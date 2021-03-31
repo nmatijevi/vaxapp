@@ -1,11 +1,11 @@
 package hr.java.matijevic.vaxapp;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.GsonBuilderUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,9 +25,9 @@ public class VaccineController {
     }
 
 
-    @GetMapping(params = "researchName")
-    public VaccineDTO getVaccineByResearchName(@RequestParam final String researchName){
-        return vaccineService.findVaccineByResearchName(researchName);
+    @GetMapping("/{scienceName}")
+    public VaccineDTO getVaccineByResearchName(@PathVariable String scienceName){
+        return vaccineService.findVaccineByResearchName(scienceName);
     }
 
     List<VaccineService> listOfVaccineServices = new ArrayList<>();
@@ -36,4 +36,29 @@ public class VaccineController {
     public List<Vaccine> getVaccineByTypeOfVaccine(@RequestParam final String typeOfVaccine){
         return vaccineService.findVaccineByTypeOfVaccine(typeOfVaccine);
     }
+
+    @PostMapping
+    public ResponseEntity<VaccineDTO> save(@Valid @RequestBody final VaccineCommand command){
+        return vaccineService.save(command)
+                .map(
+                        vaccineDTO -> ResponseEntity
+                            .status(HttpStatus.CREATED)
+                            .body(vaccineDTO)
+                )
+                .orElseGet(
+                        () -> ResponseEntity
+                                .status(HttpStatus.CONFLICT)
+                                .build()
+                );
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{scienceName}")
+    public void delete(@PathVariable String scienceName){
+        vaccineService.deleteByScienceName(scienceName);
+    }
+
+
+
+
 }
