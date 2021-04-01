@@ -18,4 +18,6 @@ public interface VaccineService {
 
     Optional<VaccineDTO> save(VaccineCommand command);
 
+    Optional<VaccineDTO> update(String producerName, VaccineCommand command);
+
 }

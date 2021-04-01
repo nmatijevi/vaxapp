@@ -40,6 +40,11 @@ public class ServiceClass implements VaccineService, Serializable {
       return vaccineRepository.save(mapCommandToVaccine(command)).map(this::mapVaccineToDTO);
      }
 
+    @Override
+    public Optional<VaccineDTO> update(String producerName, VaccineCommand command) {
+        return vaccineRepository.update(producerName, mapCommandToVaccine(command)).map(this::mapVaccineToDTO);
+    }
+
 
     private VaccineDTO mapVaccineToVaccineDTO(final Vaccine command) {
         return new VaccineDTO(command.getProducerName(), command.getNecessaryNumVaccine());

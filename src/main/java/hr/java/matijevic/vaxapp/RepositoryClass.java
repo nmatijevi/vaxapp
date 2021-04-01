@@ -51,22 +51,43 @@ public class RepositoryClass implements VaccineRepository, Serializable {
     public Optional<Vaccine> save(final Vaccine vaccine) {
 
         boolean check = true;
-
             for(Vaccine v: vaccines){
                 if (v.getScienceName().equals(vaccine.getScienceName())) {
                     check = false;
                     break;
                 }
             }
-
             if(check){
                 vaccines.add(vaccine);
                 return Optional.of(vaccine);
             }
             else {
-           
+
                 return Optional.empty();
             }
+    }
+
+    @Override
+    public Optional<Vaccine> update(String producerName, Vaccine vaccine) {
+        boolean check = true;
+        for(Vaccine v : vaccines){
+            if(v.getProducerName().equals(producerName)){
+                v.setScienceName(vaccine.getScienceName());
+                v.setNecessaryNumVaccine(vaccine.getNecessaryNumVaccine());
+                v.setProducerName(vaccine.getProducerName());
+                v.setTypeOfVacine(vaccine.getTypeOfVaccine());
+                v.setAvailableVaccine(vaccine.getAvailableVaccine());
+                check = false;
+                break;
+
+            }
+        }
+        if(check){
+            return Optional.of(vaccine);
+        }
+        else{
+            return Optional.empty();
+        }
     }
 
 

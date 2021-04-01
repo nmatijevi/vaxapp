@@ -58,7 +58,15 @@ public class VaccineController {
         vaccineService.deleteByScienceName(scienceName);
     }
 
-
+    @PutMapping("/{producerName}")
+    public ResponseEntity<VaccineDTO> update(@PathVariable String producerName, @Valid @RequestBody
+    final VaccineCommand updateVaccineCommand){
+        return vaccineService.update(producerName, updateVaccineCommand)
+                .map(ResponseEntity::ok)
+                .orElseGet(
+                        () -> ResponseEntity.notFound().build()
+                );
+    }
 
 
 }
