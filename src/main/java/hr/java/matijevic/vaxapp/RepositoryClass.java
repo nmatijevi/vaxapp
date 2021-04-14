@@ -1,7 +1,6 @@
 package hr.java.matijevic.vaxapp;
 
 import org.springframework.stereotype.Repository;
-import org.yaml.snakeyaml.constructor.DuplicateKeyException;
 
 import java.io.Serializable;
 import java.util.*;
@@ -20,7 +19,9 @@ public class RepositoryClass implements VaccineRepository, Serializable {
             new Vaccine("Moderna", "Moderna", "red",
                     1, 3200),
             new Vaccine("AZD123", "Astra", "red",
-                    3, 789456)
+                    3, 789456),
+            new Vaccine("AZD123", "Sinopharm", "red",
+                                    3, 789456)
                     )
     );
 
@@ -49,7 +50,6 @@ public class RepositoryClass implements VaccineRepository, Serializable {
 
     @Override
     public Optional<Vaccine> save(final Vaccine vaccine) {
-
         boolean check = true;
             for(Vaccine v: vaccines){
                 if (v.getScienceName().equals(vaccine.getScienceName())) {
@@ -73,7 +73,7 @@ public class RepositoryClass implements VaccineRepository, Serializable {
         for(Vaccine v : vaccines){
             if(v.getProducerName().equals(producerName)){
                 v.setScienceName(vaccine.getScienceName());
-                v.setNecessaryNumVaccine(vaccine.getNecessaryNumVaccine());
+                v.setNecessaryNumOfVaccine(vaccine.getNecessaryNumOfVaccine());
                 v.setProducerName(vaccine.getProducerName());
                 v.setTypeOfVacine(vaccine.getTypeOfVaccine());
                 v.setAvailableVaccine(vaccine.getAvailableVaccine());
@@ -92,7 +92,7 @@ public class RepositoryClass implements VaccineRepository, Serializable {
 
 
     private VaccineDTO mapVaccineToVaccineDTO(final Vaccine command) {
-        return new VaccineDTO(command.getProducerName(), command.getNecessaryNumVaccine());
+        return new VaccineDTO(command.getScienceName(),command.getProducerName(), command.getNecessaryNumOfVaccine());
     }
 
 

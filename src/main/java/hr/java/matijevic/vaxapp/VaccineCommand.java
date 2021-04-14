@@ -15,7 +15,7 @@ public class VaccineCommand {
     private String typeOfVaccine;
 
     @NotNull(message = "Must not be null")
-    private Integer necessaryNumVaccine;
+    private Integer necessaryNumOfVaccine;
 
     @PositiveOrZero(message = "Must be positive number or zero")
     @NotNull(message = "Must not be null")
@@ -32,8 +32,8 @@ public class VaccineCommand {
     public String getTypeOfVaccine() {
         return typeOfVaccine;
     }
-    public Integer getNecessaryNumVaccine() {
-        return necessaryNumVaccine;
+    public Integer getNecessaryNumOfVaccine() {
+        return necessaryNumOfVaccine;
     }
     public Integer getAvailableVaccine() {
         return availableVaccine;

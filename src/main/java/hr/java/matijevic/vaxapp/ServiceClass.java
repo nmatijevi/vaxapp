@@ -47,18 +47,18 @@ public class ServiceClass implements VaccineService, Serializable {
 
 
     private VaccineDTO mapVaccineToVaccineDTO(final Vaccine command) {
-        return new VaccineDTO(command.getProducerName(), command.getNecessaryNumVaccine());
+        return new VaccineDTO(command.getScienceName(),command.getProducerName(), command.getNecessaryNumOfVaccine());
     }
     private Vaccine mapCommandToVaccine(final VaccineCommand command){
         return new Vaccine(command.getScienceName(),command.getProducerName(),command.getTypeOfVaccine(),
-                command.getNecessaryNumVaccine(),command.getAvailableVaccine());
+                command.getNecessaryNumOfVaccine(),command.getAvailableVaccine());
     }
     private VaccineDTO mapCommandToVaccineDTO(final VaccineCommand command){
-        return new VaccineDTO(command.getProducerName(),command.getNecessaryNumVaccine());
+        return new VaccineDTO(command.getScienceName(),command.getProducerName(),command.getNecessaryNumOfVaccine());
     }
 
     private VaccineDTO mapVaccineToDTO(final Vaccine vaccine){
-        return new VaccineDTO(vaccine.getProducerName(), vaccine.getNecessaryNumVaccine());
+        return new VaccineDTO(vaccine.getScienceName(),vaccine.getProducerName(), vaccine.getNecessaryNumOfVaccine());
     }
 
 }

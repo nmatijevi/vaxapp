@@ -7,11 +7,15 @@ import java.util.Optional;
 public class VaccineDTO {
 
     private String producerName;
-    private int neccesaryNumVacine;
+    private String scienceName;
+    private int necessaryNumOfVaccine;
 
-    public VaccineDTO(String producerName, int neccesaryNumVacine) {
+
+
+    public VaccineDTO(String scienceName, String producerName, int neccesaryNumVacine) {
+        this.scienceName = scienceName;
         this.producerName = producerName;
-        this.neccesaryNumVacine = neccesaryNumVacine;
+        this.necessaryNumOfVaccine = neccesaryNumVacine;
     }
 
     public String getProducerName() {
@@ -22,13 +26,19 @@ public class VaccineDTO {
         this.producerName = producerName;
     }
 
-    public int getNeccesaryNumVacine() {
-        return neccesaryNumVacine;
+    public int getNecessaryNumOfVaccine() {
+        return necessaryNumOfVaccine;
     }
 
-    public void setNeccesaryNumVacine(int neccesaryNumVacine) {
-        this.neccesaryNumVacine = neccesaryNumVacine;
+    public void setNecessaryNumOfVaccine(int necessaryNumOfVaccine) {
+        this.necessaryNumOfVaccine = necessaryNumOfVaccine;
     }
 
+    public String getScienceName() {
+        return scienceName;
+    }
 
+    public void setScienceName(String scienceName) {
+        this.scienceName = scienceName;
+    }
 }
