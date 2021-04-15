@@ -15,13 +15,15 @@ public class RepositoryClass implements VaccineRepository, Serializable {
             ArrayList<>(
                     Arrays.asList(
             new Vaccine("Phizer", "Phizer-BioTech", "grey",
-                    2, 3000),
+                    2, 3000,
+                    new SideEffect ("alergijska reakcija", 1, "jaka alergijska reakcija na mjesavinu lijekova")),
             new Vaccine("Moderna", "Moderna", "red",
-                    1, 3200),
-            new Vaccine("AZD123", "Astra", "red",
-                    3, 789456),
-            new Vaccine("AZD123", "Sinopharm", "red",
-                                    3, 789456)
+                    1, 3200,
+                    new SideEffect ("alergijska reakcija", 1, "jaka alergijska reakcija na mjesavinu lijekova")),
+            new Vaccine("AZD123", "Astra", "red", 3,
+                    789456, new SideEffect("alergijska reakcija", 1, "jaka alergijska reakcija na mjesavinu lijekova")),
+            new Vaccine("AZD123", "Sinopharm", "red",3,
+                    789456, new SideEffect("alergijska reakcija", 1, "jaka alergijska reakcija na mjesavinu lijekova"))
                     )
     );
 
@@ -92,7 +94,7 @@ public class RepositoryClass implements VaccineRepository, Serializable {
 
 
     private VaccineDTO mapVaccineToVaccineDTO(final Vaccine command) {
-        return new VaccineDTO(command.getScienceName(),command.getProducerName(), command.getNecessaryNumOfVaccine());
+        return new VaccineDTO(command.getScienceName(),command.getProducerName(), command.getNecessaryNumOfVaccine(), command.getSideEffect());
     }
 
 

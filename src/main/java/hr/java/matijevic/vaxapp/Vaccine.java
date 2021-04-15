@@ -7,17 +7,16 @@ public class Vaccine {
     private String typeOfVaccine;
     private Integer necessaryNumOfVaccine;
     private Integer availableVaccine;
+    private SideEffect sideEffect;
 
-    public Vaccine(String scienceName, String producerName, String typeOfVaccine, Integer necessaryNumOfVaccine, Integer availableVaccine) {
+    public Vaccine(String scienceName, String producerName, String typeOfVaccine, Integer necessaryNumOfVaccine, Integer availableVaccine, SideEffect sideEffect) {
         this.scienceName = scienceName;
         this.producerName = producerName;
         this.typeOfVaccine = typeOfVaccine;
         this.necessaryNumOfVaccine = necessaryNumOfVaccine;
         this.availableVaccine = availableVaccine;
+        this.sideEffect = sideEffect;
     }
-
-
-
     public String getScienceName() {
         return scienceName;
     }
@@ -49,12 +48,15 @@ public class Vaccine {
     public void setNecessaryNumOfVaccine(Integer necessaryNumOfVaccine) {
         this.necessaryNumOfVaccine = necessaryNumOfVaccine;
     }
-
     public Integer getAvailableVaccine() {
         return availableVaccine;
     }
-
     public void setAvailableVaccine(Integer availableVaccine) {
         this.availableVaccine = availableVaccine;
+    }
+
+    public SideEffect getSideEffect(){ return sideEffect; }
+    public void setSideEffect(SideEffect sideEffect){
+        this.sideEffect = sideEffect;
     }
 }

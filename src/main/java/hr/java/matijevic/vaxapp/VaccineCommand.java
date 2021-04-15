@@ -21,7 +21,7 @@ public class VaccineCommand {
     @NotNull(message = "Must not be null")
     private Integer availableVaccine;
 
-
+    private SideEffect sideEffect;
 
     public String getScienceName() {
         return scienceName;
@@ -38,7 +38,5 @@ public class VaccineCommand {
     public Integer getAvailableVaccine() {
         return availableVaccine;
     }
-
-
-
+    public SideEffect getSideEffect() {return sideEffect;}
 }
