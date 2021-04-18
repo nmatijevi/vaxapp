@@ -1,17 +1,17 @@
 package hr.java.matijevic.vaxapp;
 
-public class SideEffect {
+public class SideEffectDTO {
 
     private String shortDescription;
-    private int percentageOfEffect;
+    private Number percentageOfEffect;
     private String longDescription;
 
-
-    public SideEffect(String shortDescription, int percentageOfEffect, String longDescription) {
+    public SideEffectDTO(String shortDescription, Number percentageOfEffect, String longDescription) {
         this.shortDescription = shortDescription;
         this.percentageOfEffect = percentageOfEffect;
         this.longDescription = longDescription;
     }
+
 
     public String getShortDescription() {
         return shortDescription;
@@ -21,11 +21,11 @@ public class SideEffect {
         this.shortDescription = shortDescription;
     }
 
-    public int getPercentageOfEffect() {
+    public Number getPercentageOfEffect() {
         return percentageOfEffect;
     }
 
-    public void setPercentageOfEffect(int percentageOfEffect) {
+    public void setPercentageOfEffect(Number percentageOfEffect) {
         this.percentageOfEffect = percentageOfEffect;
     }
 
@@ -36,6 +36,5 @@ public class SideEffect {
     public void setLongDescription(String longDescription) {
         this.longDescription = longDescription;
     }
-
 
 }

@@ -20,6 +20,8 @@ public class VaccineDTO {
         this.sideEffect = sideEffect;
     }
 
+
+
     public String getProducerName() {
         return producerName;
     }

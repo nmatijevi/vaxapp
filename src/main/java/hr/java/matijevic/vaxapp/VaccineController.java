@@ -31,8 +31,6 @@ public class VaccineController {
         return vaccineService.findVaccineByResearchName(scienceName);
     }
 
-    List<VaccineService> listOfVaccineServices = new ArrayList<>();
-
     @GetMapping(params = "typeOfVaccine")
     public List<Vaccine> getVaccineByTypeOfVaccine(@RequestParam final String typeOfVaccine){
         return vaccineService.findVaccineByTypeOfVaccine(typeOfVaccine);
