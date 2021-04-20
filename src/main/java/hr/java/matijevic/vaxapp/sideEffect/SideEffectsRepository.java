@@ -1,4 +1,4 @@
-package hr.java.matijevic.vaxapp;
+package hr.java.matijevic.vaxapp.sideEffect;
 
 import org.springframework.stereotype.Repository;
 

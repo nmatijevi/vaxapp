@@ -1,21 +1,40 @@
 package hr.java.matijevic.vaxapp;
 
+import hr.java.matijevic.vaxapp.sideEffect.SideEffect;
+
+import java.util.Date;
+
 public class Vaccine {
 
+    private long id;
     private String scienceName;
     private String producerName;
     private String typeOfVaccine;
     private Integer necessaryNumOfVaccine;
     private Integer availableVaccine;
-    private SideEffect sideEffect;
 
-    public Vaccine(String scienceName, String producerName, String typeOfVaccine, Integer necessaryNumOfVaccine, Integer availableVaccine, SideEffect sideEffect) {
+    public Vaccine() {
+
+    }
+
+
+
+    public Vaccine(long id, String scienceName, String producerName, String typeOfVaccine, Integer necessaryNumOfVaccine, Integer availableVaccine) {
+        this.id = id;
         this.scienceName = scienceName;
         this.producerName = producerName;
         this.typeOfVaccine = typeOfVaccine;
         this.necessaryNumOfVaccine = necessaryNumOfVaccine;
         this.availableVaccine = availableVaccine;
-        this.sideEffect = sideEffect;
+    }
+
+
+    public long getId() {return id;}
+
+    public void setId(long id) {this.id = id;}
+
+    public void setTypeOfVaccine(String typeOfVaccine) {
+        this.typeOfVaccine = typeOfVaccine;
     }
     public String getScienceName() {
         return scienceName;
@@ -55,8 +74,4 @@ public class Vaccine {
         this.availableVaccine = availableVaccine;
     }
 
-    public SideEffect getSideEffect(){ return sideEffect; }
-    public void setSideEffect(SideEffect sideEffect){
-        this.sideEffect = sideEffect;
-    }
 }

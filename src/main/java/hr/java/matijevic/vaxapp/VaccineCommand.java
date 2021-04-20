@@ -1,9 +1,12 @@
 package hr.java.matijevic.vaxapp;
 
 import javax.validation.constraints.*;
+import java.util.Date;
 
 public class VaccineCommand {
 
+    @NotNull(message = "Must not be empty")
+    private long id;
 
     @NotBlank(message = "Must not be empty")
     private String scienceName;
@@ -21,8 +24,10 @@ public class VaccineCommand {
     @NotNull(message = "Must not be null")
     private Integer availableVaccine;
 
-    private SideEffect sideEffect;
 
+
+
+    public long getId() { return id;}
     public String getScienceName() {
         return scienceName;
     }
@@ -38,5 +43,6 @@ public class VaccineCommand {
     public Integer getAvailableVaccine() {
         return availableVaccine;
     }
-    public SideEffect getSideEffect() {return sideEffect;}
+
+
 }

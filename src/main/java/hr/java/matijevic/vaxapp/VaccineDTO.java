@@ -9,15 +9,13 @@ public class VaccineDTO {
     private String producerName;
     private String scienceName;
     private int necessaryNumOfVaccine;
-    private SideEffect sideEffect;
 
 
-
-    public VaccineDTO(String scienceName, String producerName, int neccesaryNumVacine, SideEffect sideEffect ) {
+    public VaccineDTO(String scienceName, String producerName, int neccesaryNumVacine) {
         this.scienceName = scienceName;
         this.producerName = producerName;
         this.necessaryNumOfVaccine = neccesaryNumVacine;
-        this.sideEffect = sideEffect;
+
     }
 
 
@@ -45,6 +43,5 @@ public class VaccineDTO {
     public void setScienceName(String scienceName) {
         this.scienceName = scienceName;
     }
-    public SideEffect sideEffect(){ return sideEffect;}
-    public void setSideEffect(SideEffect sideEffect) { this.sideEffect = sideEffect;}
+
 }

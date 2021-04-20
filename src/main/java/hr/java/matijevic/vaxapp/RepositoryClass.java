@@ -1,5 +1,8 @@
 package hr.java.matijevic.vaxapp;
 
+import org.springframework.context.annotation.Primary;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
@@ -8,24 +11,39 @@ import java.util.stream.Collectors;
 
 @Repository
 public class RepositoryClass implements VaccineRepository, Serializable {
+    @Override
+    public List<Vaccine> findAll() {
+        return null;
+    }
 
+    @Override
+    public Optional<Vaccine> findVaccineByResearchName(String researchName) {
+        return Optional.empty();
+    }
+
+    @Override
+    public List<Vaccine> findVaccineByTypeOfVaccine(String typeOfVaccine) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteByScienceName(String scienceName) {
+        return false;
+    }
+
+    @Override
+    public Optional<Vaccine> save(Vaccine vaccine) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Vaccine> update(String producerName, Vaccine vaccine) {
+        return Optional.empty();
+    }
+
+    /*
     private VaccineRepository vaccineRepository;
 
-    private final List<Vaccine> vaccines = new
-            ArrayList<>(
-                    Arrays.asList(
-            new Vaccine("Phizer", "Phizer-BioTech", "grey",
-                    2, 3000,
-                    new SideEffect ("alergijska reakcija", 1, "jaka alergijska reakcija na mjesavinu lijekova")),
-            new Vaccine("Moderna", "Moderna", "red",
-                    1, 3200,
-                    new SideEffect ("alergijska reakcija", 1, "jaka alergijska reakcija na mjesavinu lijekova")),
-            new Vaccine("AZD123", "Astra", "red", 3,
-                    789456, new SideEffect("alergijska reakcija", 1, "jaka alergijska reakcija na mjesavinu lijekova")),
-            new Vaccine("AZD123", "Sinopharm", "red",3,
-                    789456, new SideEffect("alergijska reakcija", 1, "jaka alergijska reakcija na mjesavinu lijekova"))
-                    )
-    );
 
     @Override
     public List<Vaccine> findAll() {
@@ -94,8 +112,12 @@ public class RepositoryClass implements VaccineRepository, Serializable {
 
 
     private VaccineDTO mapVaccineToVaccineDTO(final Vaccine command) {
-        return new VaccineDTO(command.getScienceName(),command.getProducerName(), command.getNecessaryNumOfVaccine(), command.getSideEffect());
+        return new VaccineDTO(command.getScienceName(),command.getProducerName(), command.getNecessaryNumOfVaccine());
     }
+
+
+
+     */
 
 
 }
