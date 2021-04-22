@@ -15,5 +15,7 @@ public interface VaccineRepositoryJdbc {
     List<Vaccine> findVaccineByTypeOfVaccine(String typeOfVaccine);
     Optional<Vaccine> findVaccineByResearchName(String scienceName);
     boolean deleteByScienceName(String scienceName);
+    List<Vaccine>findVaccineInsideVaccineBoundaries(Integer lowerNum, Integer higherNum);
+
     Optional<Vaccine> update(String producerName, Vaccine vaccine);
 }

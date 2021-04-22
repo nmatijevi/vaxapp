@@ -30,6 +30,11 @@ public class ServiceClass implements VaccineService, Serializable {
       return vaccineRepositoryJdbc.findVaccineByTypeOfVaccine(typeOfVaccine);
     }
 
+    @Override
+    public List<VaccineDTO> findVaccineInsideVaccineBoundaries(Integer lowerNum, Integer higherNum) {
+        return vaccineRepositoryJdbc.findVaccineInsideVaccineBoundaries(lowerNum, higherNum).stream().map(this::mapVaccineToDTO).collect(Collectors.toList());
+    }
+
 
     @Override
     public boolean deleteByScienceName(String scienceName) {

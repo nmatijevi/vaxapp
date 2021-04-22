@@ -36,6 +36,11 @@ public class VaccineController {
         return vaccineService.findVaccineByTypeOfVaccine(typeOfVaccine);
     }
 
+    @GetMapping("/vaccineBoundaries/{lower}-{higher}")
+    public List<VaccineDTO> findVaccineInsideVaccineBoundaries(@PathVariable String lower, @PathVariable String higher){
+        return vaccineService.findVaccineInsideVaccineBoundaries(Integer.parseInt(lower), Integer.parseInt(higher));
+    }
+
     @PostMapping
     public ResponseEntity<VaccineDTO> save(@Valid @RequestBody final VaccineCommand command){
         return vaccineService.save(command)
@@ -66,6 +71,8 @@ public class VaccineController {
                         () -> ResponseEntity.notFound().build()
                 );
     }
+
+
 
 
 }

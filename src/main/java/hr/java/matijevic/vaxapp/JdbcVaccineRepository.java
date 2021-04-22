@@ -29,14 +29,7 @@ public class JdbcVaccineRepository implements VaccineRepositoryJdbc{
 
     }
 
-  /*  @Override
-    public Optional<Vaccine> save(Vaccine vaccine) {
-        vaccine.setDate(new Date());
-        vaccine.setId(saveVaccineDetails(vaccine));
-        return vaccine;
-    }
 
-   */
 
     private long saveVaccineDetails(Vaccine vaccine){
         Map<String, Object> values = new HashMap<>();
@@ -77,6 +70,11 @@ public class JdbcVaccineRepository implements VaccineRepositoryJdbc{
         String url = "DELETE FROM Vaccines where scienceName = ?";
         Object[] args = new Object[] {scienceName};
         return  jdbc.update("DELETE FROM Vaccines where scienceName = ?",args) == 1;
+    }
+
+    @Override
+    public List<Vaccine> findVaccineInsideVaccineBoundaries(Integer lowerNum, Integer higherNum) {
+        return jdbc.query("select * from Vaccines where availableVaccine between ? and ?", this::mapRowToVaccines,lowerNum, higherNum);
     }
 
 
