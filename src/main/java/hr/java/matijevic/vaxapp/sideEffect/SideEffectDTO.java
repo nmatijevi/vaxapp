@@ -13,9 +13,7 @@ public class SideEffectDTO {
     }
 
 
-    public String getShortDescription() {
-        return shortDescription;
-    }
+    public String getShortDescription() { return shortDescription; }
 
     public void setShortDescription(String shortDescription) {
         this.shortDescription = shortDescription;

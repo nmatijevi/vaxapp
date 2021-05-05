@@ -15,13 +15,21 @@ public class SideEffectController {
     }
 
     @GetMapping
-    public List<SideEffectDTO> getAllSideEffect() {
+    public List<SideEffectDTO> findAll() {
         return sideEffectService.findAll();
     }
 
+   @GetMapping("/{idVaccine}")
+    public SideEffectDTO getSideEffectById_vaccine(@PathVariable int idVaccine){
+        return sideEffectService.findByIdVaccine(idVaccine);
+    }
 
+/*
     @GetMapping("/{shortDescription}")
     public SideEffectDTO getSideEffectByShortDescription(@PathVariable String shortDescription){
-        return sideEffectService.findSideEffectByShortDescription(shortDescription);
+        return sideEffectService.findByShortDescription(shortDescription);
     }
+ */
+
+
 }

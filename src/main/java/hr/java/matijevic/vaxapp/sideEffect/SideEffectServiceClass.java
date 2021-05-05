@@ -19,12 +19,19 @@ public class SideEffectServiceClass implements SideEffectService{
         return sideEffectRepository.findAll().stream().map(this::mapSideEffectToDTO).collect(Collectors.toList());
     }
 
-    @Override
-    public SideEffectDTO findSideEffectByShortDescription(String shortDescription) {
-        return sideEffectRepository.findSideEffectByShortDescription(shortDescription).map(this::mapSideEffectToDTO).orElse(null);
+ /*   @Override
+    public SideEffectDTO findByShortDescription(String shortDescription) {
+        return sideEffectRepository.findByShortDescription(shortDescription).map(this::mapSideEffectToDTO).orElse(null);
     }
 
 
+  */
+
+    @Override
+    public SideEffectDTO findByIdVaccine(Integer id) {
+        return sideEffectRepository.findByIdVaccine(id).map(this::mapSideEffectToDTO).orElse(null);
+
+    }
 
 
     private SideEffectDTO mapSideEffectToDTO(final SideEffect sideEffect){

@@ -1,5 +1,7 @@
 package hr.java.matijevic.vaxapp;
 
+import hr.java.matijevic.vaxapp.sideEffect.SideEffect;
+
 import javax.validation.constraints.*;
 import java.util.Date;
 
@@ -23,8 +25,6 @@ public class VaccineCommand {
     @PositiveOrZero(message = "Must be positive number or zero")
     @NotNull(message = "Must not be null")
     private Integer availableVaccine;
-
-
 
 
     public long getId() { return id;}
