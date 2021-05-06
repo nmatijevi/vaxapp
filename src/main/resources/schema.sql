@@ -7,14 +7,13 @@ create table if not exists Vaccines(
     available_vaccine integer not null
 );
 create table if not exists Sideeffects(
-    idside identity,
+    id identity,
     short_description varchar(20) not null,
     percentage integer not null,
     long_description varchar(40) not null,
-    idvaccineside integer not null,
-    vaccinename varchar(20) not null,
-    foreign key (idvaccineside) references Vaccines(id)
-
+    idvaccine integer not null,
+    science_name varchar(20) not null,
+    foreign key (science_name) references Vaccines(science_name)
 );
 
 

@@ -6,14 +6,15 @@ import hr.java.matijevic.vaxapp.Vaccine;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
-@Table(name="Sideeffects")
+@Table(name = "Sideeffects")
 public class SideEffect implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idside")
+    @Column(name = "id")
+    @GeneratedValue
     private long id;
 
     @Column(name = "short_description")
@@ -25,21 +26,18 @@ public class SideEffect implements Serializable {
     @Column(name = "long_description")
     private String longDescription;
 
-    @Column(name = "idvaccineside")
-    private int idVaccine;
-
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "idvaccine")
     private Vaccine vaccine;
 
+    private String scienceName;
 
-
-    public SideEffect( long id,String shortDescription, int percentageOfEffect, String longDescription, int idVaccine) {
+    public SideEffect( long id,String shortDescription, int percentageOfEffect, String longDescription) {
         this.id = id;
         this.shortDescription = shortDescription;
         this.percentageOfEffect = percentageOfEffect;
         this.longDescription = longDescription;
-        this.idVaccine = idVaccine;
+
     }
 
     public SideEffect() {
@@ -86,11 +84,24 @@ public class SideEffect implements Serializable {
         this.vaccine = vaccine;
     }
 
-    public int getIdVaccine() {
-        return idVaccine;
+    public String getScienceName() {
+        return scienceName;
     }
 
-    public void setIdVaccine(int idVaccine) {
-        this.idVaccine = idVaccine;
+    public void setScienceName(String scienceName) {
+        this.scienceName = scienceName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SideEffect)) return false;
+        SideEffect that = (SideEffect) o;
+        return getId() == that.getId() && getPercentageOfEffect() == that.getPercentageOfEffect() && Objects.equals(getShortDescription(), that.getShortDescription()) && Objects.equals(getLongDescription(), that.getLongDescription()) && Objects.equals(getVaccine(), that.getVaccine());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getShortDescription(), getPercentageOfEffect(), getLongDescription(), getVaccine());
     }
 }

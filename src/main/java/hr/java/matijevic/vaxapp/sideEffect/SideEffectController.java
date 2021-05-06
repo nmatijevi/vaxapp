@@ -19,17 +19,31 @@ public class SideEffectController {
         return sideEffectService.findAll();
     }
 
-   @GetMapping("/{idVaccine}")
+ /*  @GetMapping("/{idVaccine}")
     public SideEffectDTO getSideEffectById_vaccine(@PathVariable int idVaccine){
         return sideEffectService.findByIdVaccine(idVaccine);
     }
 
-/*
+  */
+
+
     @GetMapping("/{shortDescription}")
     public SideEffectDTO getSideEffectByShortDescription(@PathVariable String shortDescription){
         return sideEffectService.findByShortDescription(shortDescription);
     }
- */
+
+
+     @GetMapping("/searchByScienceName/{scienceName}")
+     public SideEffectDTO getSideEffectByScienceName(@PathVariable String scienceName){
+         return sideEffectService.findByScienceName(scienceName);
+ }
+
+
+
+    @GetMapping("/frequency/{from}-{to}")
+    public List<SideEffectDTO> findAllByPercentageOfEffectBetween(@PathVariable String from, @PathVariable String to){
+        return sideEffectService.findAllByPercentageOfEffectBetween(Integer.parseInt(from), Integer.parseInt(to));
+    }
 
 
 }

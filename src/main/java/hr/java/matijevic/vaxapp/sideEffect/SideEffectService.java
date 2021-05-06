@@ -10,7 +10,9 @@ public interface SideEffectService {
 
     List<SideEffectDTO> findAll();
 
-   // SideEffectDTO findByShortDescription(String shortDescription);
-    SideEffectDTO findByIdVaccine(Integer id);
+    SideEffectDTO findByShortDescription(String shortDescription);
+    SideEffectDTO findByScienceName(String scienceName);
+    List<SideEffectDTO>findAllByPercentageOfEffectBetween(Integer from, Integer to);
+   // SideEffectDTO findByIdVaccine(Integer id);
 
 }

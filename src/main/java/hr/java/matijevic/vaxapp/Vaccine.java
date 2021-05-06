@@ -94,6 +94,14 @@ public class Vaccine {
         this.availableVaccine = availableVaccine;
     }
 
+    public List<SideEffect> getSideEffectList() {
+        return sideEffectList;
+    }
+
+    public void setSideEffectList(List<SideEffect> sideEffectList) {
+        this.sideEffectList = sideEffectList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

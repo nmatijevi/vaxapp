@@ -19,18 +19,25 @@ public class SideEffectServiceClass implements SideEffectService{
         return sideEffectRepository.findAll().stream().map(this::mapSideEffectToDTO).collect(Collectors.toList());
     }
 
- /*   @Override
+    @Override
     public SideEffectDTO findByShortDescription(String shortDescription) {
         return sideEffectRepository.findByShortDescription(shortDescription).map(this::mapSideEffectToDTO).orElse(null);
     }
 
+  //  @Override
+ //   public SideEffectDTO findByIdVaccine(Integer id) {
+ //       return sideEffectRepository.findByIdVaccine(id).map(this::mapSideEffectToDTO).orElse(null);
 
-  */
+ //   }
 
     @Override
-    public SideEffectDTO findByIdVaccine(Integer id) {
-        return sideEffectRepository.findByIdVaccine(id).map(this::mapSideEffectToDTO).orElse(null);
+       public SideEffectDTO findByScienceName(String scienceName) {
+           return sideEffectRepository.findByScienceName(scienceName).map(this::mapSideEffectToDTO).orElse(null);
+              }
 
+    @Override
+    public List<SideEffectDTO> findAllByPercentageOfEffectBetween(Integer from, Integer to) {
+        return sideEffectRepository.findAllByPercentageOfEffectBetween(from, to).stream().map(this::mapSideEffectToDTO).collect(Collectors.toList());
     }
 
 
