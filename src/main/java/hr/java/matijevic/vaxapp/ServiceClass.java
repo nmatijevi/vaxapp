@@ -37,8 +37,8 @@ public class ServiceClass implements VaccineService, Serializable {
 
 
     @Override
-    public boolean deleteByScienceName(String scienceName) {
-       return vaccineRepositoryJdbc.deleteByScienceName(scienceName);
+    public boolean deleteByResearchName(String researchName) {
+       return vaccineRepositoryJdbc.deleteByScienceName(researchName);
     }
 
     @Override
@@ -54,13 +54,14 @@ public class ServiceClass implements VaccineService, Serializable {
 
 
     private Vaccine mapCommandToVaccine(final VaccineCommand command){
-        return new Vaccine(command.getId(),command.getScienceName(),command.getProducerName(),command.getTypeOfVaccine(),
-                command.getNecessaryNumOfVaccine(),command.getAvailableVaccine());
+        return new Vaccine(command.getId(),command.getResearchName(),command.getManufacturerName(),command.getType(),
+                command.getNumberOfShots(),command.getAvailableDoses());
     }
 
 
     private VaccineDTO mapVaccineToDTO(final Vaccine vaccine){
-        return new VaccineDTO(vaccine.getScienceName(),vaccine.getProducerName(), vaccine.getNecessaryNumOfVaccine());
+        return new VaccineDTO(vaccine.getResearchName(),vaccine.getManufacturerName(), vaccine.getType(),
+                vaccine.getNumberOfShots(), vaccine.getAvailableDoses());
     }
 
 }

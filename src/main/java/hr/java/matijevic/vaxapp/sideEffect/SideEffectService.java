@@ -11,8 +11,8 @@ public interface SideEffectService {
     List<SideEffectDTO> findAll();
 
     SideEffectDTO findByShortDescription(String shortDescription);
-    SideEffectDTO findByScienceName(String scienceName);
-    List<SideEffectDTO>findAllByPercentageOfEffectBetween(Integer from, Integer to);
+    SideEffectDTO findByResearchName(String ResearchName);
+    List<SideEffectDTO>findAllByFrequencyBetween(Integer from, Integer to);
    // SideEffectDTO findByIdVaccine(Integer id);
 
 }

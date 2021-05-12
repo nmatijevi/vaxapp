@@ -12,8 +12,8 @@ public interface SideEffectRepository extends JpaRepository<SideEffect, Long> {
 
 
     Optional<SideEffect> findByShortDescription(String shortDescription);
-    Optional<SideEffect> findByScienceName(String scienceName);
-    List<SideEffect> findAllByPercentageOfEffectBetween(Integer from, Integer to);
+    Optional<SideEffect> findByResearchName(String researchName);
+    List<SideEffect> findAllByFrequencyBetween(Integer from, Integer to);
 
 
     // Optional<SideEffect> findByIdVaccine(Integer id);

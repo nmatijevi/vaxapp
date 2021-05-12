@@ -31,17 +31,17 @@ public class SideEffectServiceClass implements SideEffectService{
  //   }
 
     @Override
-       public SideEffectDTO findByScienceName(String scienceName) {
-           return sideEffectRepository.findByScienceName(scienceName).map(this::mapSideEffectToDTO).orElse(null);
+       public SideEffectDTO findByResearchName(String ResearchName) {
+           return sideEffectRepository.findByResearchName(ResearchName).map(this::mapSideEffectToDTO).orElse(null);
               }
 
     @Override
-    public List<SideEffectDTO> findAllByPercentageOfEffectBetween(Integer from, Integer to) {
-        return sideEffectRepository.findAllByPercentageOfEffectBetween(from, to).stream().map(this::mapSideEffectToDTO).collect(Collectors.toList());
+    public List<SideEffectDTO> findAllByFrequencyBetween(Integer from, Integer to) {
+        return sideEffectRepository.findAllByFrequencyBetween(from, to).stream().map(this::mapSideEffectToDTO).collect(Collectors.toList());
     }
 
 
     private SideEffectDTO mapSideEffectToDTO(final SideEffect sideEffect){
-        return new SideEffectDTO(sideEffect.getShortDescription(), sideEffect.getPercentageOfEffect(), sideEffect.getLongDescription());
+        return new SideEffectDTO(sideEffect.getShortDescription(), sideEffect.getFrequency(), sideEffect.getDescription());
     }
 }

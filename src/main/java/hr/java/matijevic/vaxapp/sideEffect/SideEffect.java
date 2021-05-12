@@ -5,7 +5,6 @@ import hr.java.matijevic.vaxapp.Vaccine;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -21,22 +20,22 @@ public class SideEffect implements Serializable {
     private String shortDescription;
 
     @Column(name = "percentage")
-    private int percentageOfEffect;
+    private int frequency;
 
     @Column(name = "long_description")
-    private String longDescription;
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "idvaccine")
     private Vaccine vaccine;
 
-    private String scienceName;
+    private String researchName;
 
-    public SideEffect( long id,String shortDescription, int percentageOfEffect, String longDescription) {
+    public SideEffect(long id, String shortDescription, int frequency, String description) {
         this.id = id;
         this.shortDescription = shortDescription;
-        this.percentageOfEffect = percentageOfEffect;
-        this.longDescription = longDescription;
+        this.frequency = frequency;
+        this.description = description;
 
     }
 
@@ -60,20 +59,20 @@ public class SideEffect implements Serializable {
         this.shortDescription = shortDescription;
     }
 
-    public int getPercentageOfEffect() {
-        return percentageOfEffect;
+    public int getFrequency() {
+        return frequency;
     }
 
-    public void setPercentageOfEffect(int percentageOfEffect) {
-        this.percentageOfEffect = percentageOfEffect;
+    public void setFrequency(int percentageOfEffect) {
+        this.frequency = percentageOfEffect;
     }
 
-    public String getLongDescription() {
-        return longDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setLongDescription(String longDescription) {
-        this.longDescription = longDescription;
+    public void setDescription(String longDescription) {
+        this.description = longDescription;
     }
 
     public Vaccine getVaccine() {
@@ -84,12 +83,12 @@ public class SideEffect implements Serializable {
         this.vaccine = vaccine;
     }
 
-    public String getScienceName() {
-        return scienceName;
+    public String getResearchName() {
+        return researchName;
     }
 
-    public void setScienceName(String scienceName) {
-        this.scienceName = scienceName;
+    public void setScienceName(String researchName) {
+        this.researchName = researchName;
     }
 
     @Override
@@ -97,11 +96,11 @@ public class SideEffect implements Serializable {
         if (this == o) return true;
         if (!(o instanceof SideEffect)) return false;
         SideEffect that = (SideEffect) o;
-        return getId() == that.getId() && getPercentageOfEffect() == that.getPercentageOfEffect() && Objects.equals(getShortDescription(), that.getShortDescription()) && Objects.equals(getLongDescription(), that.getLongDescription()) && Objects.equals(getVaccine(), that.getVaccine());
+        return getId() == that.getId() && getFrequency() == that.getFrequency() && Objects.equals(getShortDescription(), that.getShortDescription()) && Objects.equals(getDescription(), that.getDescription()) && Objects.equals(getVaccine(), that.getVaccine());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getShortDescription(), getPercentageOfEffect(), getLongDescription(), getVaccine());
+        return Objects.hash(getId(), getShortDescription(), getFrequency(), getDescription(), getVaccine());
     }
 }

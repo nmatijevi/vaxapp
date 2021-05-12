@@ -1,8 +1,6 @@
 package hr.java.matijevic.vaxapp;
 
-import hr.java.matijevic.vaxapp.sideEffect.SideEffect;
 import org.springframework.context.annotation.Primary;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
@@ -34,13 +32,13 @@ public class JdbcVaccineRepository implements VaccineRepositoryJdbc {
 
     private long saveVaccineDetails(Vaccine vaccine){
         Map<String, Object> values = new HashMap<>();
-        values.put("science_name", vaccine.getScienceName());
-        values.put("producer_name", vaccine.getProducerName());
-        values.put("type_vaccine", vaccine.getTypeOfVaccine());
-        values.put("available_vaccine", vaccine.getAvailableVaccine());
-        values.put("necessary_vaccine", vaccine.getNecessaryNumOfVaccine());
-        System.out.println(vaccine.getScienceName());
-        System.out.println(vaccine.getProducerName());
+        values.put("research_name", vaccine.getResearchName());
+        values.put("producer_name", vaccine.getManufacturerName());
+        values.put("type_vaccine", vaccine.getType());
+        values.put("available_vaccine", vaccine.getAvailableDoses());
+        values.put("necessary_vaccine", vaccine.getNumberOfShots());
+        System.out.println(vaccine.getResearchName());
+        System.out.println(vaccine.getManufacturerName());
         return vaccineInserter.executeAndReturnKey(values).longValue();
     }
     @Override
@@ -52,7 +50,7 @@ public class JdbcVaccineRepository implements VaccineRepositoryJdbc {
 
     @Override
     public Vaccine findOne(Integer id) {
-        return jdbc.queryForObject("select id, science_name, producer_name, type_vaccine," +
+        return jdbc.queryForObject("select id, research_name, producer_name, type_vaccine," +
                 " necessary_vaccine, available_vaccine from Vaccines where id = ?", this::mapRowToVaccines, id);
     }
 
@@ -63,14 +61,14 @@ public class JdbcVaccineRepository implements VaccineRepositoryJdbc {
 
     @Override
     public Optional<Vaccine> findVaccineByResearchName(final String researchName) {
-        return Optional.ofNullable(jdbc.queryForObject("Select * from Vaccines where science_name = ?", this::mapRowToVaccines, researchName));
+        return Optional.ofNullable(jdbc.queryForObject("Select * from Vaccines where research_name = ?", this::mapRowToVaccines, researchName));
     }
 
     @Override
     public boolean deleteByScienceName(String scienceName) {
         String url = "DELETE FROM Vaccines where science_name = ?";
         Object[] args = new Object[] {scienceName};
-        return  jdbc.update("DELETE FROM Vaccines where science_name = ?",args) == 1;
+        return  jdbc.update("DELETE FROM Vaccines where research_name = ?",args) == 1;
     }
 
     @Override
@@ -89,11 +87,11 @@ public class JdbcVaccineRepository implements VaccineRepositoryJdbc {
     private Vaccine mapRowToVaccines(ResultSet rs, int rowNum) throws SQLException{
         Vaccine vaccine = new Vaccine();
         vaccine.setId(rs.getLong("id"));
-        vaccine.setScienceName(rs.getString("science_name"));
-        vaccine.setProducerName(rs.getString("producer_name"));
-        vaccine.setAvailableVaccine(rs.getInt("available_vaccine"));
+        vaccine.setResearchName(rs.getString("research_name"));
+        vaccine.setManufacturerName(rs.getString("producer_name"));
+        vaccine.setAvailableDoses(rs.getInt("available_vaccine"));
         vaccine.setTypeOfVacine(rs.getString("type_vaccine"));
-        vaccine.setNecessaryNumOfVaccine(rs.getInt("necessary_vaccine"));
+        vaccine.setNumberOfShots(rs.getInt("necessary_vaccine"));
         return vaccine;
     }
 }

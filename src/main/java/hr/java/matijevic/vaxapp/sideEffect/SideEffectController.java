@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("sideeffect")
+@RequestMapping("side-effect")
 @CrossOrigin(origins = "http://localhost:4200")
 public class SideEffectController {
 
@@ -33,16 +33,16 @@ public class SideEffectController {
     }
 
 
-     @GetMapping("/searchByScienceName/{scienceName}")
-     public SideEffectDTO getSideEffectByScienceName(@PathVariable String scienceName){
-         return sideEffectService.findByScienceName(scienceName);
+     @GetMapping("/searchByResearchName/{researchName}")
+     public SideEffectDTO getSideEffectByResearchName(@PathVariable String researchName){
+         return sideEffectService.findByResearchName(researchName);
  }
 
 
 
     @GetMapping("/frequency/{from}-{to}")
-    public List<SideEffectDTO> findAllByPercentageOfEffectBetween(@PathVariable String from, @PathVariable String to){
-        return sideEffectService.findAllByPercentageOfEffectBetween(Integer.parseInt(from), Integer.parseInt(to));
+    public List<SideEffectDTO> findAllByFrequencyBetween(@PathVariable String from, @PathVariable String to){
+        return sideEffectService.findAllByFrequencyBetween(Integer.parseInt(from), Integer.parseInt(to));
     }
 
 

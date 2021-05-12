@@ -15,7 +15,7 @@ public interface VaccineService {
     List<Vaccine> findVaccineByTypeOfVaccine(String typeOfVaccine);
     List<VaccineDTO>findVaccineInsideVaccineBoundaries(Integer lowerNum, Integer higherNum);
 
-    boolean deleteByScienceName(String scienceName);
+    boolean deleteByResearchName(String researchName);
 
     Optional<VaccineDTO> save(VaccineCommand command);
 

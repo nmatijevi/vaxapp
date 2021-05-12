@@ -1,9 +1,6 @@
 package hr.java.matijevic.vaxapp;
 
-import hr.java.matijevic.vaxapp.sideEffect.SideEffect;
-
 import javax.validation.constraints.*;
-import java.util.Date;
 
 public class VaccineCommand {
 
@@ -11,37 +8,38 @@ public class VaccineCommand {
     private long id;
 
     @NotBlank(message = "Must not be empty")
-    private String scienceName;
+    private String researchName;
 
     @NotBlank(message = "Must not be empty")
-    private String producerName;
+    private String manufacturerName;
 
     @NotBlank(message = "Must not be empty")
-    private String typeOfVaccine;
+    private String type;
 
     @NotNull(message = "Must not be null")
-    private Integer necessaryNumOfVaccine;
+    private Integer numberOfShots;
 
     @PositiveOrZero(message = "Must be positive number or zero")
     @NotNull(message = "Must not be null")
-    private Integer availableVaccine;
+    private Integer availableDoses;
+
 
 
     public long getId() { return id;}
-    public String getScienceName() {
-        return scienceName;
+    public String getResearchName() {
+        return researchName;
     }
-    public String getProducerName() {
-        return producerName;
+    public String getManufacturerName() {
+        return manufacturerName;
     }
-    public String getTypeOfVaccine() {
-        return typeOfVaccine;
+    public String getType() {
+        return type;
     }
-    public Integer getNecessaryNumOfVaccine() {
-        return necessaryNumOfVaccine;
+    public Integer getNumberOfShots() {
+        return numberOfShots;
     }
-    public Integer getAvailableVaccine() {
-        return availableVaccine;
+    public Integer getAvailableDoses() {
+        return availableDoses;
     }
 
 

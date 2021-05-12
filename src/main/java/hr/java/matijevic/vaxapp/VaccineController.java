@@ -3,6 +3,7 @@ package hr.java.matijevic.vaxapp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.GsonBuilderUtils;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -26,9 +27,9 @@ public class VaccineController {
     }
 
 
-    @GetMapping("/{scienceName}")
-    public VaccineDTO getVaccineByResearchName(@PathVariable String scienceName){
-        return vaccineService.findVaccineByResearchName(scienceName);
+    @GetMapping("/{researchName}")
+    public VaccineDTO getVaccineByResearchName(@PathVariable String researchName){
+        return vaccineService.findVaccineByResearchName(researchName);
     }
 
     @GetMapping(params = "typeOfVaccine")
@@ -57,15 +58,15 @@ public class VaccineController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{scienceName}")
-    public void delete(@PathVariable String scienceName){
-        vaccineService.deleteByScienceName(scienceName);
+    @DeleteMapping("/{researchName}")
+    public void delete(@PathVariable String researchName){
+        vaccineService.deleteByResearchName(researchName);
     }
 
-    @PutMapping("/{producerName}")
-    public ResponseEntity<VaccineDTO> update(@PathVariable String producerName, @Valid @RequestBody
+    @PutMapping("/{manufacturerName}")
+    public ResponseEntity<VaccineDTO> update(@PathVariable String manufacturerName, @Valid @RequestBody
     final VaccineCommand updateVaccineCommand){
-        return vaccineService.update(producerName, updateVaccineCommand)
+        return vaccineService.update(manufacturerName, updateVaccineCommand)
                 .map(ResponseEntity::ok)
                 .orElseGet(
                         () -> ResponseEntity.notFound().build()
