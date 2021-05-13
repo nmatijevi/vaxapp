@@ -10,12 +10,15 @@ INSERT INTO Sideeffects(id,short_description, percentage, long_description, idva
 
 INSERT INTO user(id,username, password, first_name, last_name)VALUES
 (1,'admin', '$2b$10$lPXjqrhDJDgXP5r7l7D9XONAl07DuMVDd0HTG4Q1QewX/ks3/2NVS'  , 'admin', 'admin'),
-(2,'user', '$2b$10$lPXjqrhDJDgXP5r7l7D9XONAl07DuMVDd0HTG4Q1QewX/ks3/2NVS', 'user', 'user');
+(2,'user', '$2b$10$lPXjqrhDJDgXP5r7l7D9XONAl07DuMVDd0HTG4Q1QewX/ks3/2NVS', 'user', 'user'),
+(3, 'deleter', '$2b$10$lPXjqrhDJDgXP5r7l7D9XONAl07DuMVDd0HTG4Q1QewX/ks3/2NVS', 'deleter', 'deleter' );
 
 INSERT INTO authority(id, name)VALUES
 (1, 'ROLE_ADMIN'),
-(2, 'ROLE_USER');
+(2, 'ROLE_USER'),
+(3, 'DELETER');
 
 INSERT INTO user_authority(user_id, authority_id)VALUES
 (1,1),
-(2,2);
+(2,2),
+(3,3);

@@ -65,7 +65,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/authenticate").permitAll()
                 .antMatchers(HttpMethod.POST, "/vaccine").hasAuthority("ROLE_ADMIN")
                 .antMatchers(HttpMethod.PUT, "/vaccine/{researchName}").hasAuthority("ROLE_ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/vaccine/{researchName}").hasAuthority("ROLE_ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/vaccine/{researchName}").hasAuthority("DELETER")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling()
