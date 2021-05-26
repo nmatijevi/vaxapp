@@ -99,6 +99,7 @@ public class Vaccine {
         this.sideEffectList = sideEffectList;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,7 +1,7 @@
 create table if not exists Vaccines(
     id identity,
     research_name varchar(20) not null,
-    producer_name varchar(20) not null,
+    manufacturer_name varchar(20) not null,
     type_vaccine varchar(20) not null,
     necessary_vaccine integer not null,
     available_vaccine integer not null

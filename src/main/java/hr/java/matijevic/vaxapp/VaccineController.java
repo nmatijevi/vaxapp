@@ -72,8 +72,4 @@ public class VaccineController {
                         () -> ResponseEntity.notFound().build()
                 );
     }
-
-
-
-
 }

@@ -65,6 +65,12 @@ public class JdbcVaccineRepository implements VaccineRepositoryJdbc {
     }
 
     @Override
+    public Optional<Vaccine> findVaccineByManufacturerName(String manufacturerName) {
+        return Optional.ofNullable(jdbc.queryForObject("Select * from Vaccines where manufacturer_name = ?", this::mapRowToVaccines, manufacturerName));
+    }
+
+
+    @Override
     public boolean deleteByScienceName(String scienceName) {
         String url = "DELETE FROM Vaccines where science_name = ?";
         Object[] args = new Object[] {scienceName};
@@ -88,7 +94,7 @@ public class JdbcVaccineRepository implements VaccineRepositoryJdbc {
         Vaccine vaccine = new Vaccine();
         vaccine.setId(rs.getLong("id"));
         vaccine.setResearchName(rs.getString("research_name"));
-        vaccine.setManufacturerName(rs.getString("producer_name"));
+        vaccine.setManufacturerName(rs.getString("manufacturer_name"));
         vaccine.setAvailableDoses(rs.getInt("available_vaccine"));
         vaccine.setTypeOfVacine(rs.getString("type_vaccine"));
         vaccine.setNumberOfShots(rs.getInt("necessary_vaccine"));

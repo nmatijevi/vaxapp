@@ -1,4 +1,10 @@
-INSERT INTO Vaccines(id,research_name, producer_name, type_vaccine, necessary_vaccine, available_vaccine)VALUES
+delete from Sideeffects;
+delete from vaccines;
+delete from user_authority;
+delete from user;
+delete from authority;
+
+INSERT INTO Vaccines(id,research_name, manufacturer_name, type_vaccine, necessary_vaccine, available_vaccine)VALUES
 (1,'PF123', 'Phizer-Biotech', 'MRNA', 2, 1000),
 (2,'Mod23', 'Moderna', 'Vrna', 2, 1000),
 (3,'Az02', 'Astra Zeneca', 'Krna', 2, 1000),

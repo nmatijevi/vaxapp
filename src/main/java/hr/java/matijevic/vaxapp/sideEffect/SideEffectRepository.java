@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface SideEffectRepository extends JpaRepository<SideEffect, Long> {
 
-
+    List<SideEffect> findAll();
     Optional<SideEffect> findByShortDescription(String shortDescription);
     Optional<SideEffect> findByResearchName(String researchName);
     List<SideEffect> findAllByFrequencyBetween(Integer from, Integer to);

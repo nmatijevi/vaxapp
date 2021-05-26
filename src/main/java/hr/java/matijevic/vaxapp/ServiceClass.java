@@ -19,6 +19,7 @@ public class ServiceClass implements VaccineService, Serializable {
     @Override
     public List<VaccineDTO> findAll() {
         return vaccineRepositoryJdbc.findAll().stream().map(this::mapVaccineToDTO).collect(Collectors.toList());
+
     }
 
     @Override
