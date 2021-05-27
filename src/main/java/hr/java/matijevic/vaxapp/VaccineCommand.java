@@ -42,5 +42,27 @@ public class VaccineCommand {
         return availableDoses;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
+    public void setResearchName(String researchName) {
+        this.researchName = researchName;
+    }
+
+    public void setManufacturerName(String manufacturerName) {
+        this.manufacturerName = manufacturerName;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setNumberOfShots(Integer numberOfShots) {
+        this.numberOfShots = numberOfShots;
+    }
+
+    public void setAvailableDoses(Integer availableDoses) {
+        this.availableDoses = availableDoses;
+    }
 }
