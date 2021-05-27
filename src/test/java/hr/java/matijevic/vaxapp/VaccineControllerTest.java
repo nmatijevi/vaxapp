@@ -55,18 +55,18 @@ class VaccineControllerTest {
     void update() throws Exception {
 
         ObjectMapper objectMapper = new ObjectMapper();
-        VaccineCommand vaccineCommandWrong = new VaccineCommand();
-        vaccineCommandWrong.setResearchName("researchName");
-        vaccineCommandWrong.setManufacturerName("manufacturerName");
-        vaccineCommandWrong.setType("");
-        vaccineCommandWrong.setNumberOfShots(1);
-        vaccineCommandWrong.setAvailableDoses(1512);
+        VaccineCommand vaccineCommand = new VaccineCommand();
+        vaccineCommand.setResearchName("researchName");
+        vaccineCommand.setManufacturerName("manufacturerName");
+        vaccineCommand.setType("");
+        vaccineCommand.setNumberOfShots(1);
+        vaccineCommand.setAvailableDoses(1512);
 
         this.mockMvc.perform(
                 org.springframework.test.web.servlet.request.MockMvcRequestBuilders.
                         put("/vaccine/" + "researchName").
                         with(user("admin").password("user").roles("ADMIN")).with(csrf()).
-                        contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(vaccineCommandWrong))
+                        contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(vaccineCommand))
                         .accept(MediaType.APPLICATION_JSON)
         ).andExpect(status().isBadRequest());
     }
