@@ -4,6 +4,7 @@ package hr.java.matijevic.vaxapp;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class SampleJob extends QuartzJobBean {
     }
 
     @Override
+    @Scheduled(cron = "0 12 * * 1-5")
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         List<Vaccine> vaccines = vaccineRepositoryJdbc.findAll();
         System.out.println("Ovo su trenutno dostupna cjepiva:");
