@@ -25,7 +25,7 @@ public class SampleJob extends QuartzJobBean {
     }
 
     @Override
-    @Scheduled(cron = "0 12 * * 1-5")
+    //@Scheduled(cron = "0 12 * * 1-5")
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         List<Vaccine> vaccines = vaccineRepositoryJdbc.findAll();
         System.out.println("Ovo su trenutno dostupna cjepiva:");
